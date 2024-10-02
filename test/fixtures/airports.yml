@@ -1,0 +1,18 @@
+# == Schema Information
+#
+# Table name: airports
+#
+#  id           :bigint           not null, primary key
+#  airport_code :integer
+#  name         :text
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+one:
+  code: 1
+  name: MyText
+
+two:
+  code: 1
+  name: MyText

@@ -1,0 +1,19 @@
+<h1>Create Booking</h1>
+
+<h2>Flight details</h2>
+<%= @flight.flight_info %>
+
+<h2>Passenger details</h2>
+<%= form_with model: @booking, method: :post do |form| %>
+  <%= form.hidden_field :flight_id, value: @flight.id %>
+
+  <%= form.fields_for :passengers do |fields| %>
+    <%= fields.label :name, "Passenger Name" %>
+    <%= fields.text_field :name %>
+
+    <%= fields.label :email, "Email" %>
+    <%= fields.text_field :email %>
+  <% end %>
+
+  <%= form.button "Make Booking" %>
+<% end %>

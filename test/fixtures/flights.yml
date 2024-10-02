@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: flights
+#
+#  id           :bigint           not null, primary key
+#  capacity     :integer
+#  start        :datetime
+#  duration     :integer
+#  arrival_id   :bigint
+#  departure_id :bigint
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+one:
+  capacity: 1
+  start: 2024-09-28 00:15:58
+  duration: 1
+
+two:
+  capacity: 1
+  start: 2024-09-28 00:15:58
+  duration: 1

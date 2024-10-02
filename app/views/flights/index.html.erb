@@ -1,0 +1,28 @@
+<h1>Flights</h1>
+
+<%= form_with model: @flight, method: :get do |form| %>
+  <%= form.label :departure_id, "From" %>
+  <%= form.collection_select :departure_id, @airports, :second, :first %>
+
+  <%= form.label :arrival_id, "To" %>
+  <%= form.collection_select :arrival_id, @airports, :second, :first %>
+
+  <%= form.label :start, "Date" %>
+  <%= form.collection_select :start, Flight.all, :start, :flight_date_formatted %>
+
+  <%= form.label :passengers, "Passengers" %>
+  <%= form.select :passengers, [1, 2, 3, 4]%> 
+
+  <%= form.button "Get Flights" %>
+<% end %>
+
+
+
+<%= form_with model: @flight, method: :get, url: bookings_new_path do |form| %>
+  <%= form.label :flight_id, "Flight"%>
+  <%= form.collection_radio_buttons :flight_id, @flights, :id, :flight_info %>
+  
+  <%= form.hidden_field :passengers, value: params[:passengers] %>
+  <%= form.button "Select Flight" %>
+<% end %>
+
