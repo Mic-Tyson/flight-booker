@@ -4,16 +4,39 @@
 <%= @flight.flight_info %>
 
 <h2>Passenger details</h2>
-<%= form_with model: @booking, method: :post do |form| %>
-  <%= form.hidden_field :flight_id, value: @flight.id %>
 
-  <%= form.fields_for :passengers do |fields| %>
-    <%= fields.label :name, "Passenger Name" %>
-    <%= fields.text_field :name %>
+<div data-controller="passenger" class="passenger-form-container" data-passenger-target="formContainer">
+  <%= form_with model: @booking, method: :post do |form| %>
+    <%= form.hidden_field :flight_id, value: @flight.id %>
 
-    <%= fields.label :email, "Email" %>
-    <%= fields.text_field :email %>
+    <div data-passenger-target="formFieldContainer">
+    <%= form.fields_for :passengers do |fields| %>
+      <div data-passenger-target="formField" class="passenger-form-fields">
+        <%= fields.label :name, "Passenger Name" %>
+        <%= fields.text_field :name %>
+
+        <%= fields.label :email, "Email" %>
+        <%= fields.text_field :email %>
+
+        <button data-action="passenger#remove">Remove Passenger</button>
+      </div>
+    <% end %>
+    </div>
+
+    <button data-action="click->passenger#add">Add Passenger</button>
+
+    <%= form.submit "Make Booking", data: { passenger_target: "formSubmit" } %>
   <% end %>
 
-  <%= form.button "Make Booking" %>
-<% end %>
+  <template data-passenger-target="formTemplate" id="passenger-field-template">
+    <div data-passenger-target="formField" class="passenger-fields">
+      <label for="booking_passengers_attributes_0_name">Passenger Name</label>
+      <input type="text" name="booking[passengers_attributes][0][name]" id="booking_passengers_attributes_0_name">
+
+      <label for="booking_passengers_attributes_0_email">Email</label>
+      <input type="text" name="booking[passengers_attributes][0][email]" id="booking_passengers_attributes_0_email">
+
+      <button data-action="passenger#remove">Remove Passenger</button>
+    </div>
+  </template>
+</div>
