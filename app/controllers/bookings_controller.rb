@@ -14,6 +14,7 @@ class BookingsController < ApplicationController
     @booking.passengers.build if @booking.passengers.empty?
 
     if @booking.save
+      PassengerMailer.with(booking: @booking).confirmation_email.deliver_later
       redirect_to @booking, notice: 'Booking Successful'
     else
       render :new, status: :unprocessable_entity

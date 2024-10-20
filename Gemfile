@@ -2,8 +2,6 @@ source "https://rubygems.org"
 
 ruby "3.2.2"
 
-gem "annotate"
-
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.4"
 
@@ -68,3 +66,4 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+gem "letter_opener", group: :development

@@ -1,0 +1,10 @@
+Thanks for your booking, <%= @passenger.name %>
+===============================================
+  
+You have successfully booked your tickets,
+your booking id is: <%= @booking.id %>.
+
+You are travelling from <%= @booking.flight.departure.name %>
+to <%= @booking.flight.arrival.name %> on <%= @booking.flight.start %>
+
+Thanks for travelling with us and have a great day!
